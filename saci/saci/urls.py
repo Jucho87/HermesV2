@@ -3,6 +3,7 @@ from django.urls import path, include
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
+from core.views import IndexView
 
 schema_view = get_schema_view(
     openapi.Info(
@@ -17,6 +18,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path("", IndexView.as_view(), name="index"),
     path("admin/", admin.site.urls),
     path("api/", include("core.urls")),
     path(

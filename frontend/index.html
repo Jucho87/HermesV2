@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SACI - Sistema Asistente de Compras Inteligente</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>SACI</h1>
+        <nav>
+            <!-- La navegación se añadirá aquí -->
+        </nav>
+    </header>
+
+    <main id="app-root">
+        <section id="gestion-maestros" class="card">
+            <h2>Gestión de Productos</h2>
+            <div id="filtros-productos">
+                <input type="text" id="search-input" placeholder="Buscar por nombre, marca...">
+                <select id="categoria-filter"></select>
+                <select id="marca-filter"></select>
+                <button id="filter-btn">Filtrar</button>
+            </div>
+            <div id="productos-list">
+                <!-- La lista de productos se renderizará aquí -->
+            </div>
+        </section>
+
+        <section id="creacion-lista" class="card">
+            <h2>Crear Nueva Lista de Compra</h2>
+            <div id="form-nueva-lista">
+                <input type="text" id="lista-nombre" placeholder="Nombre de la lista">
+                <input type="date" id="lista-fecha">
+            </div>
+
+            <h3>Añadir Ítem</h3>
+            <div id="form-add-item">
+                <input type="text" id="item-search" placeholder="Buscar producto para añadir...">
+                <div id="item-search-results"></div>
+                <input type="number" id="item-cantidad" placeholder="Cantidad">
+                <input type="number" id="item-precio" placeholder="Precio Estimado">
+                <button id="add-item-btn">Añadir Ítem</button>
+            </div>
+
+            <h3>Ítems de la Lista</h3>
+            <div id="items-lista-container">
+                <!-- Los ítems añadidos se mostrarán aquí -->
+            </div>
+
+            <h3>Total Estimado: <span id="total-estimado">0.00</span></h3>
+            <button id="save-lista-btn">Guardar Lista</button>
+        </section>
+
+        <section id="registro-transaccion" class="card">
+            <h2>Registrar Compra Realizada</h2>
+            <div id="form-registro-transaccion">
+                <label for="lista-a-registrar-select">Seleccionar Lista de Compra:</label>
+                <select id="lista-a-registrar-select"></select>
+            </div>
+
+            <div id="items-a-registrar-container">
+                <!-- Los ítems de la lista seleccionada se mostrarán aquí para el registro -->
+            </div>
+
+            <div id="items-no-planeados-container">
+                <h3>Añadir Ítem No Planeado</h3>
+                <div id="form-add-item-no-planeado">
+                    <input type="text" id="item-search-no-planeado" placeholder="Buscar producto...">
+                    <div id="item-search-results-no-planeado"></div>
+                    <input type="number" id="item-cantidad-no-planeado" placeholder="Cantidad">
+                    <input type="number" id="item-precio-no-planeado" placeholder="Precio Real">
+                    <button id="add-item-no-planeado-btn">Añadir Ítem No Planeado</button>
+                </div>
+                <div id="lista-items-no-planeados"></div>
+            </div>
+
+            <button id="save-transaccion-btn">Guardar Compra</button>
+        </section>
+
+        <section id="reportes" class="card">
+            <h2>Reportes y Análisis</h2>
+
+            <div id="reporte-comparativo">
+                <h3>Reporte Comparativo (Estimado vs. Real)</h3>
+                <select id="reporte-lista-select"></select>
+                <div id="reporte-comparativo-container"></div>
+            </div>
+
+            <div id="reportes-graficos">
+                <h3>Gastos por Categoría y Marca</h3>
+                <canvas id="gasto-categoria-chart"></canvas>
+                <canvas id="gasto-marca-chart"></canvas>
+            </div>
+
+            <div id="reporte-tendencia">
+                <h3>Tendencia de Precios de un Producto</h3>
+                <input type="text" id="tendencia-search" placeholder="Buscar producto...">
+                <div id="tendencia-search-results"></div>
+                <div id="tendencia-chart-container">
+                    <canvas id="tendencia-precios-chart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SACI</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

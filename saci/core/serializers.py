@@ -62,9 +62,17 @@ class ProductoDetalleSerializer(serializers.ModelSerializer):
 
 
 class ItemListaSerializer(serializers.ModelSerializer):
+    producto_nombre = serializers.CharField(source='producto_detalle.__str__', read_only=True)
+
     class Meta:
         model = ItemLista
-        fields = ["producto_detalle", "cantidad_planeada", "precio_estimado_unitario"]
+        fields = [
+            "id",
+            "producto_detalle",
+            "producto_nombre",
+            "cantidad_planeada",
+            "precio_estimado_unitario",
+        ]
 
 
 class ListaCompraSerializer(serializers.ModelSerializer):
